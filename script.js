@@ -20,15 +20,10 @@ function getWord(word)
         if (!found)
         {
             document.getElementById("type").innerHTML = "Normal type";
-            document.getElementById("fire").innerHTML = "";
-            document.getElementById("water").innerHTML = "";
-            document.getElementById("grass").innerHTML = "";
-            document.getElementById("electric").innerHTML = "";
-            document.getElementById("ice").innerHTML = "";
-            document.getElementById("poison").innerHTML = "";
-            document.getElementById("air").innerHTML = "";
-            document.getElementById("mind").innerHTML = "";
-            document.getElementById("rock").innerHTML = "";
+            for (let i = 0; i < 9; i++)
+            {
+                document.getElementById("type" + i).innerHTML = "";
+            }
             typeColor("Normal");
         }
     }
