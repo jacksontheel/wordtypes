@@ -7,20 +7,18 @@ function getWord(word)
 {
     if (word.length > 0)
     {
+        document.getElementById("word").innerHTML = word.toUpperCase();
         let found = false;
         data.forEach((element) =>
         {
             if (element.word.toUpperCase() == word.toUpperCase())
             {
-                console.log(element);
                 getType(element);
-                fillData(element);
                 found = true;
             }
         });
         if (!found)
         {
-            document.getElementById("word").innerHTML = word.toUpperCase();
             document.getElementById("type").innerHTML = "Normal type";
             document.getElementById("fire").innerHTML = "";
             document.getElementById("water").innerHTML = "";
@@ -38,20 +36,25 @@ function getWord(word)
 
 function getType(obj)
 {
-    let typeNumbers = new Array(9);
-    typeNumbers[0] = { num: obj.fire, name: "Fire" };
-    typeNumbers[1] = { num: obj.water, name: "Water" };
-    typeNumbers[2] = { num: obj.grass, name: "Grass" };
-    typeNumbers[3] = { num: obj.electric, name: "Electric" };
-    typeNumbers[4] = { num: obj.ice, name: "Ice" };
-    typeNumbers[5] = { num: obj.poison, name: "Poison" };
-    typeNumbers[6] = { num: obj.air, name: "Air" };
-    typeNumbers[7] = { num: obj.mind, name: "Mind" };
-    typeNumbers[8] = { num: obj.rock, name: "Rock" };
+    let typeData = new Array(9);
+    typeData[0] = { num: obj.fire, name: "Fire" };
+    typeData[1] = { num: obj.water, name: "Water" };
+    typeData[2] = { num: obj.grass, name: "Grass" };
+    typeData[3] = { num: obj.electric, name: "Electric" };
+    typeData[4] = { num: obj.ice, name: "Ice" };
+    typeData[5] = { num: obj.poison, name: "Poison" };
+    typeData[6] = { num: obj.air, name: "Air" };
+    typeData[7] = { num: obj.mind, name: "Mind" };
+    typeData[8] = { num: obj.rock, name: "Rock" };
+
+    typeData.sort(function(a, b) {
+        return b.num - a.num;
+    });
+    fillData(typeData);
 
     let max = 0;
     let typeReturn = "";
-    typeNumbers.forEach((element) => {
+    typeData.forEach((element) => {
         if (element.num > max)
         {
             max = element.num;
@@ -98,16 +101,18 @@ function typeColor(type)
     }
 }
 
-function fillData(obj)
+function fillData(data)
 {
-    document.getElementById("word").innerHTML = obj.word;
-    document.getElementById("fire").innerHTML = "Fire: " + Number.parseFloat(obj.fire).toFixed(2);
-    document.getElementById("water").innerHTML = "Water: " + Number.parseFloat(obj.water).toFixed(2); 
-    document.getElementById("grass").innerHTML = "Grass: " + Number.parseFloat(obj.grass).toFixed(2);
-    document.getElementById("electric").innerHTML = "Electric: " + Number.parseFloat(obj.electric).toFixed(2);
-    document.getElementById("ice").innerHTML = "Ice: " + Number.parseFloat(obj.ice).toFixed(2);
-    document.getElementById("poison").innerHTML = "Poison: " + Number.parseFloat(obj.poison).toFixed(2);
-    document.getElementById("air").innerHTML = "Air: " + Number.parseFloat(obj.air).toFixed(2);
-    document.getElementById("mind").innerHTML = "Mind: " + Number.parseFloat(obj.mind).toFixed(2);
-    document.getElementById("rock").innerHTML = "Rock: " + Number.parseFloat(obj.rock).toFixed(2);
+    console.log(data)
+    data.forEach((element, index) =>
+    {
+        console.log(element);
+        document.getElementById("type" + index).innerHTML = element.name + " " + formatFloat(element.num);
+    })
+}
+
+function formatFloat(num)
+{
+    num = Math.max(0, num);
+    return Number.parseFloat(num).toFixed(2)
 }
