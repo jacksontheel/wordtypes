@@ -1,0 +1,41 @@
+{
+    "Types" :
+    [
+        {
+            "Name" : "Fire",
+            "Keywords" : ["Fire"]   
+        },
+        {
+            "Name" : "Water",
+            "Keywords" : ["Water"]   
+        },
+        {
+            "Name" : "Grass",
+            "Keywords" : ["Grass","Plant","Nature"]   
+        },
+        {
+            "Name" : "Electric",
+            "Keywords" : ["Electric","Lightning"]   
+        },
+        {
+            "Name" : "Ice",
+            "Keywords" : ["Ice"]   
+        },
+        {
+            "Name" : "Mind",
+            "Keywords" : ["Mind","Psychic"]   
+        },
+        {
+            "Name" : "Poison",
+            "Keywords" : ["Poison"]   
+        },
+        {
+            "Name" : "Air",
+            "Keywords" : ["Air","Flying"]   
+        },
+        {
+            "Name" : "Rock",
+            "Keywords" : ["Rock","Ground"]   
+        }
+    ]
+}
